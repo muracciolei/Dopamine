@@ -397,6 +397,51 @@ body {
 }
 
 /* ========================================
+   Back to Top Button
+   ======================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 74px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: all 0.3s ease;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.back-to-top svg {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.back-to-top:hover svg {
+    color: var(--accent);
+}
+
+/* ========================================
    Theme Toggle Button
    ======================================== */
 
@@ -556,7 +601,11 @@ body {
     }
     
     .theme-toggle {
-        bottom: 70px;
+        bottom: 20px;
+    }
+    
+    .back-to-top {
+        display: none;
     }
     
     .mobile-toc-btn {

@@ -148,6 +148,7 @@
         toc: document.getElementById('toc'),
         article: document.getElementById('article'),
         themeToggle: document.getElementById('themeToggle'),
+        backToTop: document.getElementById('backToTop'),
         sidebar: document.getElementById('sidebar'),
         tocToggle: document.getElementById('tocToggle'),
         mobileTocBtn: document.getElementById('mobileTocBtn')
@@ -272,6 +273,29 @@
     }
 
     // ==========================================
+    // BACK TO TOP BUTTON
+    // ==========================================
+
+    function updateBackToTop() {
+        if (!elements.backToTop) return;
+        
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 300) {
+            elements.backToTop.classList.add('visible');
+        } else {
+            elements.backToTop.classList.remove('visible');
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // ==========================================
     // CURRENT SECTION HIGHLIGHT
     // ==========================================
 
@@ -347,9 +371,15 @@
             elements.themeToggle.addEventListener('click', toggleTheme);
         }
         
+        // Back to top button
+        if (elements.backToTop) {
+            elements.backToTop.addEventListener('click', scrollToTop);
+        }
+        
         // Scroll events for progress and section highlighting
         window.addEventListener('scroll', () => {
             updateProgress();
+            updateBackToTop();
             highlightCurrentSection();
         }, { passive: true });
         
